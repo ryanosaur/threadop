@@ -17,10 +17,10 @@ Limitations:
 ``` python
 import operator
 
-from threadop import enable_threadop
+from threadop import fp
 
 
-@enable_threadop
+@fp
 def example():
     # The below is equivalent to
     # print(operator.mul(operator.add(42, 15), 2))
