@@ -7,7 +7,7 @@ class _ThreadopTransformer(ast.NodeTransformer):
     def visit_FunctionDef(self, node):
         node.decorator_list = [
             decorator for decorator in node.decorator_list
-            if not isinstance(decorator, ast.Name) or decorator.id != "fp"
+            if not isinstance(decorator, ast.Name) or decorator.id != "enable_threadop"
         ]
         self.generic_visit(node)
         return node
@@ -24,7 +24,7 @@ class _ThreadopTransformer(ast.NodeTransformer):
         return node
 
 
-def fp(fn):
+def enable_threadop(fn):
     """Transform all occurrences of the right shift operator by moving
     the left-hand expression into the right first argument position of
     the right-hand expression.

@@ -2,11 +2,11 @@ import operator
 
 import pytest
 
-from threadop import fp
+from threadop import enable_threadop
 
 
 def test_threadop_rewrites_functions():
-    @fp
+    @enable_threadop
     def example():
         return 42 | operator.add(2) | operator.mul(5)
 
@@ -15,6 +15,6 @@ def test_threadop_rewrites_functions():
 
 def test_threadop_fails_if_rhs_is_not_a_fn_call():
     with pytest.raises(RuntimeError):
-        @fp
+        @enable_threadop
         def example():
             return 42 | operator.add
